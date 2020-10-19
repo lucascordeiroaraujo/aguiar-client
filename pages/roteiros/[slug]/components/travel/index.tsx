@@ -8,6 +8,8 @@ import Fade from 'react-reveal/Fade';
 
 import Tada from 'react-reveal/Tada';
 
+import Countdown from 'react-countdown';
+
 const cpTravel: React.FC = () => {
 
   const [counter, setCounter] = React.useState(0);
@@ -19,6 +21,14 @@ const cpTravel: React.FC = () => {
   setInterval(() => {
     setCounter(counter + 1)
   }, 30000);
+
+  const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
+    if (completed) {
+      return 'You are good to go!';
+    } else {
+      return `${days}D ${hours}H ${minutes}M ${seconds}S`;
+    }
+  };
 
   return (
     <>
@@ -39,7 +49,12 @@ const cpTravel: React.FC = () => {
           </Fade>
 
           <Fade delay={100}>
-            <span className="countdown">20H 40M 25S</span>
+            <span className="countdown">
+              <Countdown
+                date={Date.now() + 100000000}
+                renderer={renderer}
+              />
+            </span>
           </Fade>
 
           <div className="price">
