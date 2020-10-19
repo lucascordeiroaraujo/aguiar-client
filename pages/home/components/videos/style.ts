@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default styled.section`
   width: 100%;
-  padding-top: 450px;
+  padding-top: calc(6.2% + 125px);
   margin-bottom: 125px;
   position: relative;
   &:before {
@@ -37,9 +37,6 @@ export default styled.section`
       }
       @media (min-width: 1920px) {
         font-size: 80px;
-      }
-      @media (max-width: 576px) {
-        font-size: calc(32px + (80 - 32) * ((100vw - 250px) / (1920 - 250)));
       }
     }
     div.full-video {
@@ -77,10 +74,10 @@ export default styled.section`
     }
     & > a {
       font-size: 16px;
-      text-transform: uppercase;
       color: #ffffff;
+      text-transform: uppercase;
       text-align: center;
-      padding: 25px 20px;
+      padding: 21px 15px;
       font-family: 'GothamBold';
       margin-top: 60px;
       transition: 0.5s;
@@ -89,9 +86,10 @@ export default styled.section`
         background: #ed2222;
       }
       @media (max-width: 768px) {
-        font-size: 14px;
+        width: 100%;
         padding: 15px;
         margin-top: 30px;
+        font-size: 14px;
       }
     }
   }

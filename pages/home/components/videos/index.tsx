@@ -13,7 +13,7 @@ export default function cpVideos({
 
   return (
     <Videos>
-      <Container className="container">
+      <Container className="container small-container">
         <h1>
           <span>Confira os melhores</span>
           <br /> momentos da Aguiar Viagens

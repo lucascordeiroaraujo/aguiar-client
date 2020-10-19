@@ -8,8 +8,6 @@ import GlobalStyles from '~/styles/global';
 
 import Icons from '~/styles/icons';
 
-import Header from '~/components/header';
-
 import Footer from '~/components/footer';
 
 import 'react-app-polyfill/ie9';
@@ -55,6 +53,7 @@ class MyApp extends App<StoreProps> {
       <>
         <Head>
           <title>Aguiar Viagens</title>
+          
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -147,17 +146,27 @@ class MyApp extends App<StoreProps> {
             content={require('~/public/images/icons/ms-icon-144x144.png')}
           />
 
-          <meta name="msapplication-TileColor" content="#8b8065" />
+          <meta name="msapplication-TileColor" content="#d6fff8" />
 
-          <meta name="theme-color" content="#8b8065" />
+          <meta name="theme-color" content="#d6fff8" />
+
+          <link
+            rel="stylesheet"
+            type="text/css"
+            charSet="UTF-8"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
         </Head>
 
         <>
           <GlobalStyles />
 
           <Icons />
-
-          <Header />
 
           <Component {...pageProps} />
 

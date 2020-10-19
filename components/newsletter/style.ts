@@ -65,6 +65,7 @@ export default styled.div`
         font-family: 'GothamUltra';
         text-transform: uppercase;
         transition: 0.5s;
+        appearance: none;
         background: #609764;
         &:hover {
           background: #4cb153;

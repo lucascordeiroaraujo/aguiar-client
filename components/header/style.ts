@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   width: 100vw;
   position: relative;
-  margin-bottom: 125px;
   &:before {
     content: '';
     position: absolute;
@@ -13,9 +12,6 @@ export const HeaderContainer = styled.div`
     width: 100%;
     height: 80%;
     background: #d6fff8;
-  }
-  @media (max-width: 992px) {
-    margin-bottom: 100px;
   }
 `;
 
@@ -38,7 +34,15 @@ export const Header = styled.header`
     align-items: center;
     a {
       color: #0098b6;
-      font-size: 20px;
+      font-size: 30px;
+      margin: 0px 10px;
+      transition: 0.5s;
+      &:last-child {
+        font-size: 35px;
+      }
+      &:hover {
+        color: #2d2d2d;
+      }
     }
     @media (max-width: 576px) {
       display: none;

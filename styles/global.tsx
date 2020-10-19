@@ -18,7 +18,7 @@ export default createGlobalStyle`
   article, aside, canvas, details, embed,
   figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
-  time, mark, audio, video{
+  time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -27,36 +27,36 @@ export default createGlobalStyle`
     vertical-align: baseline;
   }
   article, aside, details, figcaption, figure,
-  footer, header, hgroup, menu, nav, section{
+  footer, header, hgroup, menu, nav, section {
     display: block;
   }
-  input, select, textarea{
+  input, select, textarea {
     font-family: 'GothamMedium';
     outline: none;
   }
-  body{
+  body {
     overflow-x: hidden;
     transition: 0.5s;
   }
-  ol, ul{
+  ol, ul {
     list-style: none;
     padding: 0px;
   }
-  a{
+  a {
     text-decoration: none;
   }
-  button{
+  button {
     outline: none !important;
   }
-  blockquote, q{
+  blockquote, q {
     quotes: none;
   }
   blockquote:before, blockquote:after,
-  q:before, q:after{
+  q:before, q:after {
     content: '';
     content: none;
   }
-  table{
+  table {
     border-collapse: collapse;
     border-spacing: 0;
   }
@@ -105,9 +105,9 @@ export default createGlobalStyle`
     font-style: normal;
     font-display: auto;
   }
-  #nprogress{
+  #nprogress {
 		pointer-events: none;
-		.bar{
+		.bar {
 			position: fixed;
 			z-index: 1031;
 			top: 0;
@@ -117,9 +117,9 @@ export default createGlobalStyle`
 			background: #089ec3
 		}
 	}
-  .react-reveal{
+  .react-reveal {
 		opacity: 0;
-	}
+  }
 `;
 
 export const Container = styled.div`
@@ -127,4 +127,11 @@ export const Container = styled.div`
   max-width: 1680px;
   margin: 0px auto;
   position: relative;
+  &.full {
+    width: 100%;
+    max-width: 100%;
+  }
+  &.small-container {
+    max-width: 1440px;
+  }
 `;

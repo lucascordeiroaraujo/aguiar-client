@@ -30,6 +30,7 @@ export default styled.footer`
           }
         }
         a {
+          transition: 0.5s;
           &.email {
             font-size: 18px;
             font-family: 'GothamMedium';
@@ -74,9 +75,19 @@ export default styled.footer`
         a {
           color: #FFFFFF;
           margin: 0px 15px;
-          font-size: 30px;
+          font-size: 45px;
+          transition: 0.5s;
+          &:last-child {
+            font-size: 55px;
+          }
           @media (max-width: 768px) {
             font-size: 25px;
+            &:last-child {
+              font-size: 33px;
+            }
+          }
+          &:hover {
+            color: #d6fff8;
           }
         }
       }

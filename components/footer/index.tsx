@@ -6,7 +6,7 @@ import { Container } from '~/styles/global';
 
 const cpFooter: React.FC = () => (
   <Footer>
-    <Container className="container">
+    <Container className="container small-container">
       <div>
         <strong>Entre em Contato</strong>
 

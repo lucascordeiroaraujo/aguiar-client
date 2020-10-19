@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from '~/components/header'
+
 import Travels from './components/travels';
 
 import Moments from './components/moments';
@@ -10,8 +12,10 @@ import Pictures from './components/pictures';
 
 import Newsletter from '~/components/newsletter';
 
-const Home: any = () => (
+const pageHome: React.FC = () => (
   <>
+    <Header />
+
     <Travels />
 
     <Moments />
@@ -24,4 +28,4 @@ const Home: any = () => (
   </>
 );
 
-export default Home;
+export default pageHome;

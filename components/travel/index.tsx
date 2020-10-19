@@ -2,34 +2,69 @@ import React from 'react';
 
 import Travel from './style';
 
-const cpTravel: React.FC = () => (
+import Link from 'next/link';
+
+interface Iprops {
+  picture: string;
+  incluse: string;
+  title: string;
+  price: string;
+  date: string;
+}
+
+const cpTravel: React.FC<Iprops> = ({ picture, incluse, title, price, date }) => (
   <Travel>
-    <img src="https://fakeimg.pl/313x150/" alt="" />
-
-    <span>transporte+hotel+ingresso</span>
-
-    <h2>Beto Carrero</h2>
+    
 
     <div>
-      <div>
-        <strong>
-          <small>R$</small> 1.647
-        </strong>
+      <Link href="/roteiros/slug">
+        <a href="/roteiros/slug" title="Confira">
+          <img 
+            src={picture} 
+            alt={title} 
+            title={title} 
+            width="313" 
+            height="150" 
+          />
+        </a>
+      </Link>
 
-        <span>em até 12x no cartão</span>
-      </div>
-
-      <div>
-        <span className="buy">
-          18 a 20 de
-          <br /> Dezembro
-        </span>
-      </div>
+      <span>{incluse}</span>
     </div>
 
-    <a href="#" title="Confira">
-      <span className="buy">Quero comprar</span>
-    </a>
+    <h2>
+      <Link href="/roteiros/slug">
+        <a href="/roteiros/slug" title="Confira">
+          {title}
+        </a>
+      </Link>
+    </h2>
+
+    <div>
+      <div className="travel-info">
+        <div>
+          <strong>
+            <small>R$</small> {price}
+          </strong>
+
+          <span>em até 12x no cartão</span>
+        </div>
+
+        <div>
+          <span className="buy" dangerouslySetInnerHTML={{ __html: date }} />
+        </div>
+      </div>
+
+      <a 
+        href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${title} (${date.replace(/<br>|<br\/>|<br \/>/g, ``)})`} 
+        title="Confira"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="buy"
+      >
+        <span>Quero comprar</span>
+      </a>
+    </div>
   </Travel>
 );
 

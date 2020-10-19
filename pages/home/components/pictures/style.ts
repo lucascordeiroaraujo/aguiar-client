@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export default styled.section`
   div.container {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:

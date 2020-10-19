@@ -6,19 +6,105 @@ import Travels from './style';
 
 import Travel from '~/components/travel';
 
+import Link from 'next/link';
+
 const cpTravels: React.FC = () => (
   <Travels>
     <Container className="container">
-      <h1>Confira as melhores viagens pra você!</h1>
+      <h1>Confira as melhores<br/> viagens pra você!</h1>
+
+      <form>
+        <div>
+          <label htmlFor="city">
+            <i className="icon-location"></i> 
+            sua cidade
+          </label>
+
+          <div>
+            <select>
+              <option value="" disabled selected>selecionar</option>
+
+              <option value="Londrina">Londrina</option>
+
+              <option value="Maringá">Maringá</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="city">
+            <i className="icon-calendar"></i> 
+            selecione o mês de viagem
+          </label>
+
+          <div>
+            <select>
+              <option value="" disabled selected>selecionar</option>
+
+              <option value="01">Janeiro</option>
+
+              <option value="02">Fevereiro</option>
+
+              <option value="03">Março</option>
+
+              <option value="04">Abril</option>
+
+              <option value="05">Maio</option>
+
+              <option value="06">Junho</option>
+
+              <option value="07">Julho</option>
+
+              <option value="08">Agosto</option>
+
+              <option value="09">Setembro</option>
+
+              <option value="10">Outubro</option>
+
+              <option value="11">Novembro</option>
+
+              <option value="12">Dezembro</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <Link href="/roteiros">
+        <a title="Confira">Ver todos os destinos</a>
+      </Link>
 
       <div className="content-travels">
-        <Travel />
+        <Travel 
+          picture="https://picsum.photos/id/237/313/150"
+          incluse="transporte+hotel+ingresso" 
+          title="Beto Carreiro" 
+          price="647" 
+          date="18 a 20 de<br /> Dezembro" 
+        />
 
-        <Travel />
+        <Travel 
+          picture="https://picsum.photos/id/238/313/150"
+          incluse="transporte+hotel+ingresso" 
+          title="Gramado/RS" 
+          price="647" 
+          date="13 a 19 de<br /> Janeiro" 
+        />
 
-        <Travel />
+        <Travel 
+          picture="https://picsum.photos/id/239/313/150"
+          incluse="transporte+hotel+ingresso" 
+          title="Bonito/MS" 
+          price="647" 
+          date="09 a 14 de<br /> Dezembro" 
+        />
 
-        <Travel />
+        <Travel 
+          picture="https://picsum.photos/id/240/313/150"
+          incluse="transporte+hotel+ingresso" 
+          title="Balneário Camboriu/SC" 
+          price="647" 
+          date="18 a 20 de<br /> Dezembro" 
+        />
       </div>
     </Container>
   </Travels>
