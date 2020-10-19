@@ -6,18 +6,23 @@ import { Container } from '~/styles/global';
 
 import Videos from './style';
 
+import Fade from 'react-reveal/Fade';
+
 export default function cpVideos({
   videos,
+  teste
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(videos);
+  console.log(videos, teste);
 
   return (
     <Videos>
       <Container className="container small-container">
-        <h1>
-          <span>Confira os melhores</span>
-          <br /> momentos da Aguiar Viagens
-        </h1>
+        <Fade bottom>
+          <h1>
+            <span>Confira os melhores</span>
+            <br /> momentos da Aguiar Viagens
+          </h1>
+        </Fade>
 
         <div className="full-video">
           <iframe
@@ -27,47 +32,57 @@ export default function cpVideos({
         </div>
 
         <div className="list-videos">
-          <div>
-            <img
-              src="https://img.youtube.com/vi/yAHn23JRY3k/mqdefault.jpg"
-              alt=""
-            />
-          </div>
+          <Fade>
+            <div>
+              <img
+                src="https://img.youtube.com/vi/yAHn23JRY3k/mqdefault.jpg"
+                alt=""
+              />
+            </div>
+          </Fade>
 
-          <div>
-            <img
-              src="https://img.youtube.com/vi/OP1yKAuo_1Y/mqdefault.jpg"
-              alt=""
-            />
-          </div>
+          <Fade delay={200}>
+            <div>
+              <img
+                src="https://img.youtube.com/vi/OP1yKAuo_1Y/mqdefault.jpg"
+                alt=""
+              />
+            </div>
+          </Fade>
 
-          <div>
-            <img
-              src="https://img.youtube.com/vi/RelgnJFcmj8/mqdefault.jpg"
-              alt=""
-            />
-          </div>
+          <Fade delay={400}>
+            <div>
+              <img
+                src="https://img.youtube.com/vi/RelgnJFcmj8/mqdefault.jpg"
+                alt=""
+              />
+            </div>
+          </Fade>
 
-          <div>
-            <img
-              src="https://img.youtube.com/vi/Ci9DxIu9N2M/mqdefault.jpg"
-              alt=""
-            />
-          </div>
+          <Fade delay={600}>
+            <div>
+              <img
+                src="https://img.youtube.com/vi/Ci9DxIu9N2M/mqdefault.jpg"
+                alt=""
+              />
+            </div>
+          </Fade>
         </div>
 
-        <a
-          href="#"
-          title="Confira os vídeos da Aguiar Viagens no YouTube"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Inscreva-se no YouTube
-        </a>
+        <Fade bottom>
+          <a
+            href="#"
+            title="Confira os vídeos da Aguiar Viagens no YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Inscreva-se no YouTube
+          </a>
+        </Fade>
       </Container>
     </Videos>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const channelId = 'UCJy-lSzu5UzVvLn9nXvWovg';
@@ -82,7 +97,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      videos: data.items,
+      videos: data,
+      teste: 1
     },
     revalidate: 10,
   };

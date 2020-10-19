@@ -8,65 +8,73 @@ import Travel from '~/components/travel';
 
 import Link from 'next/link';
 
+import Fade from 'react-reveal/Fade';
+
 const cpTravels: React.FC = () => (
   <Travels>
     <Container className="container">
-      <h1>Confira as melhores<br/> viagens pra você!</h1>
+      <Fade bottom>
+        <h1>Confira as melhores<br/> viagens pra você!</h1>
+      </Fade>
 
       <form>
-        <div>
-          <label htmlFor="city">
-            <i className="icon-location"></i> 
-            sua cidade
-          </label>
-
+        <Fade>
           <div>
-            <select>
-              <option value="" disabled selected>selecionar</option>
+            <label htmlFor="city">
+              <i className="icon-location"></i> 
+              sua cidade
+            </label>
 
-              <option value="Londrina">Londrina</option>
+            <div>
+              <select>
+                <option value="" disabled selected>selecionar</option>
 
-              <option value="Maringá">Maringá</option>
-            </select>
+                <option value="Londrina">Londrina</option>
+
+                <option value="Maringá">Maringá</option>
+              </select>
+            </div>
           </div>
-        </div>
+        </Fade>
 
-        <div>
-          <label htmlFor="city">
-            <i className="icon-calendar"></i> 
-            selecione o mês de viagem
-          </label>
-
+        <Fade delay={200}>
           <div>
-            <select>
-              <option value="" disabled selected>selecionar</option>
+            <label htmlFor="city">
+              <i className="icon-calendar"></i> 
+              selecione o mês de viagem
+            </label>
 
-              <option value="01">Janeiro</option>
+            <div>
+              <select>
+                <option value="" disabled selected>selecionar</option>
 
-              <option value="02">Fevereiro</option>
+                <option value="01">Janeiro</option>
 
-              <option value="03">Março</option>
+                <option value="02">Fevereiro</option>
 
-              <option value="04">Abril</option>
+                <option value="03">Março</option>
 
-              <option value="05">Maio</option>
+                <option value="04">Abril</option>
 
-              <option value="06">Junho</option>
+                <option value="05">Maio</option>
 
-              <option value="07">Julho</option>
+                <option value="06">Junho</option>
 
-              <option value="08">Agosto</option>
+                <option value="07">Julho</option>
 
-              <option value="09">Setembro</option>
+                <option value="08">Agosto</option>
 
-              <option value="10">Outubro</option>
+                <option value="09">Setembro</option>
 
-              <option value="11">Novembro</option>
+                <option value="10">Outubro</option>
 
-              <option value="12">Dezembro</option>
-            </select>
+                <option value="11">Novembro</option>
+
+                <option value="12">Dezembro</option>
+              </select>
+            </div>
           </div>
-        </div>
+        </Fade>
       </form>
 
       <Link href="/roteiros">
@@ -80,6 +88,7 @@ const cpTravels: React.FC = () => (
           title="Beto Carreiro" 
           price="647" 
           date="18 a 20 de<br /> Dezembro" 
+          delay={0}
         />
 
         <Travel 
@@ -88,6 +97,7 @@ const cpTravels: React.FC = () => (
           title="Gramado/RS" 
           price="647" 
           date="13 a 19 de<br /> Janeiro" 
+          delay={200}
         />
 
         <Travel 
@@ -96,6 +106,7 @@ const cpTravels: React.FC = () => (
           title="Bonito/MS" 
           price="647" 
           date="09 a 14 de<br /> Dezembro" 
+          delay={400}
         />
 
         <Travel 
@@ -104,6 +115,7 @@ const cpTravels: React.FC = () => (
           title="Balneário Camboriu/SC" 
           price="647" 
           date="18 a 20 de<br /> Dezembro" 
+          delay={600}
         />
       </div>
     </Container>

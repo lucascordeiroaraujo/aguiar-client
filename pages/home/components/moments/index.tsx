@@ -4,8 +4,10 @@ import Moments from './style';
 
 import Slider from 'react-slick';
 
+import Fade from 'react-reveal/Fade';
+
 const cpMoments: React.FC = () => {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     autoplay: true,
@@ -17,7 +19,9 @@ const cpMoments: React.FC = () => {
 
   return (
     <Moments>
-      <h1>Momentos inesquecíveis a gente nunca esquece</h1>
+      <Fade bottom>
+        <h1>Momentos inesquecíveis a gente nunca esquece</h1>
+      </Fade>
 
       <div>
         <div className="images">

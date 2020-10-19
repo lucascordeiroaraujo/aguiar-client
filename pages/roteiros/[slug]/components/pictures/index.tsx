@@ -1,19 +1,31 @@
 import React from 'react'
 
-import Pictures from './style'
+import Pictures from './style';
+
+import Fade from 'react-reveal/Fade';
 
 const cpPictures: React.FC = () => (
   <Pictures>
-    <h1>Confira as fotos da última viagem</h1>
+    <Fade bottom>
+      <h1>Confira as fotos da última viagem</h1>
+    </Fade>
 
     <div>
-      <img src="https://picsum.photos/id/238/300/250" alt="" />
+      <Fade>
+        <img src="https://picsum.photos/id/238/300/250" alt="" />
+      </Fade>
 
-      <img src="https://picsum.photos/id/236/300/250" alt="" />
+      <Fade delay={100}>
+        <img src="https://picsum.photos/id/236/300/250" alt="" />
+      </Fade>
 
-      <img src="https://picsum.photos/id/233/300/250" alt="" />
+      <Fade delay={200}>
+        <img src="https://picsum.photos/id/233/300/250" alt="" />
+      </Fade>
 
-      <img src="https://picsum.photos/id/234/300/250" alt="" />
+      <Fade delay={300}>
+        <img src="https://picsum.photos/id/234/300/250" alt="" />
+      </Fade>
     </div>
   </Pictures>
 );

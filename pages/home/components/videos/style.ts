@@ -96,4 +96,4 @@ export default styled.section`
   @media (max-width: 992px) {
     margin-bottom: 100px;
   }
-`
+`;
