@@ -82,6 +82,7 @@ export default styled.section`
               padding-right: 25px;
               cursor: pointer;
               appearance: none;
+              border-radius: 0px;
               background: transparent;
               option {
                 padding: 0px 10px;
@@ -110,6 +111,7 @@ export default styled.section`
         margin: 40px 0px 60px 0px;
         border: none;
         cursor: pointer;
+        appearance: none;
         background: #089ec3;
         &:hover {
           background: #46a9c1;
