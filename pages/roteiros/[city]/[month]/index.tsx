@@ -18,7 +18,7 @@ import getData from '~/services';
 
 interface Iprops {
   itineraries: itineraries[];
-  itinerariesFallBack: itineraries;
+  itinerariesFallBack: itineraries[];
   contact: contactPage;
 };
 
