@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost/aguiar/back-end/?rest_route=';
+export const API_URL = 'http://viagensaguiar-com-br.umbler.net/?rest_route=';
 
 const getData = async (url: string) => {
   try {
@@ -36,7 +36,7 @@ const getPage = async (pageId: string) => {
 const getItineraries = async (perPage: string, city: any, month: any) => {
   let url = ''
 
-  if(city && month) {
+  if (city && month) {
     url = `aguiar/itineraries/${perPage}/${city}/${month}`
   } else {
     url = `wp/v2/itineraries&per_page=${perPage}&_fields=title,slug,acf`
