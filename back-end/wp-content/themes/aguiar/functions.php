@@ -97,7 +97,7 @@
 
 		remove_menu_page('options-general.php');
 
-		remove_menu_page('tools.php');
+		// remove_menu_page('tools.php');
 
 		remove_menu_page('edit.php');
 
@@ -213,7 +213,7 @@
 
 		add_image_size('testimonials-person', 123, 123, array('center', 'center'));
 
-		add_image_size('itineraries-list', 313, 150, array('center', 'center'));
+		add_image_size('itineraries-list', 313, 150, array('top', 'top'));
 
 		add_image_size('itinerarie', 800, 800, array('center', 'center'));
 
@@ -277,12 +277,70 @@
 		return rest_ensure_response($response);
 	}
 
+	function wp_filter_itineraries($request) {
+
+		$params = $request->get_params();
+
+		$posts = get_posts(array(
+			'numberposts'	=> $params['per_page'],
+			'post_type'		=> 'itineraries',
+			'meta_query'	=> array(
+				'relation'		=> 'AND',
+				array(
+					'key'	 			=> 'boarding_place',
+					'value'	  	=> $params['boarding_place'],
+					'compare' 	=> 'LIKE',
+				),
+				array(
+					'key'	  		=> 'period',
+					'value'	  	=> $params['period'],
+					'compare' 	=> 'LIKE',
+				),
+			)
+		));
+
+		$itinerariesList = array();
+
+		foreach($posts as $post):
+
+			$itinerariesList[] = array(
+				'slug' 	=> $post->post_name,
+				'title' => array(
+					'rendered' => $post->post_title
+				),
+				'acf' 	=> array(
+					'pre-salve' 			=> get_field('pre-salve', $post->ID),
+					'image' 					=> get_field('image', $post->ID),
+					'included_resume' => get_field('included_resume', $post->ID),
+					'old_price' 			=> get_field('old_price', $post->ID),
+					'price' 					=> get_field('price', $post->ID),
+					'installment' 		=> get_field('installment', $post->ID),
+					'period' 					=> get_field('period', $post->ID),
+					'output' 					=> get_field('output', $post->ID),
+					'arrival' 				=> get_field('arrival', $post->ID),
+					'boarding_place' 	=> get_field('boarding_place', $post->ID),
+					'included' 				=> get_field('included', $post->ID)
+				)
+			);
+
+		endforeach;
+
+		return $itinerariesList;
+
+	}
+
 	add_action('rest_api_init', function(){
 
 		register_rest_route('aguiar', '/registerNewsletter', array(
 			'methods' 	=> 'POST',
 			'callback' 	=> 'wp_register_newsletter',
 		));
+
+		register_rest_route('aguiar', '/itineraries/(?P<per_page>[0-9_-]+)/(?P<boarding_place>[a-zA-Z0-9_-]+)/(?P<period>[a-zA-Z0-9_-]+)', array(
+			'methods' 	=> 'GET',
+			'callback' 	=> 'wp_filter_itineraries',
+		));
+
 
 	});
 
