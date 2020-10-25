@@ -14,10 +14,11 @@ import { contactPage } from '~/interfaces'
 
 interface Iprops {
   fullBanner?: boolean;
+  bannerImage?: string;
   contact: contactPage;
 };
 
-const cpHeader: React.FC<Iprops> = ({ fullBanner, contact }) => {
+const cpHeader: React.FC<Iprops> = ({ fullBanner, bannerImage, contact }) => {
   const [openedMenu, setOpenedMenu] = React.useState(false);
 
   const handleMenu = () => {
@@ -119,14 +120,8 @@ const cpHeader: React.FC<Iprops> = ({ fullBanner, contact }) => {
               />
             )}
 
-            {router.pathname === '/roteiros/[slug]' && (
-              <img
-                src={require(`~/public/images/placeholder/caldas-novas.jpg`)}
-                alt="Grandes experiências em cada viagem - Aguiar Transportes"
-                title="Grandes experiências em cada viagem - Aguiar Transportes"
-                width="1680"
-                height="780"
-              />
+            {bannerImage && (
+              <img src={bannerImage} alt="Aguiar Transportes" title="Aguiar Transportes" />
             )}
           </Banner>
         </Fade>

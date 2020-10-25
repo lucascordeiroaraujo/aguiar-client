@@ -62,11 +62,17 @@ const cpTravels: React.FC<Iprops> = ({ itineraries, fallback }) => {
 
                     <option value="arapongas">Arapongas</option>
 
+                    <option value="cascavel">Cascavel</option>
+
+                    <option value="foz-do-iguacu">Foz do Iguaçu</option>
+
                     <option value="londrina">Londrina</option>
 
                     <option value="maringa">Maringá</option>
 
                     <option value="rolandia">Rolândia</option>
+
+                    <option value="toledo">Toledo</option>
                   </select>
                 </div>
               </div>
@@ -99,7 +105,7 @@ const cpTravels: React.FC<Iprops> = ({ itineraries, fallback }) => {
           <input type="submit" value="Ver todos os destinos" />
         </form>
 
-        <div className={`content-travels${itineraries.length <= 3 ? ' centralized' : ''}`}>
+        <div className="content-travels">
           {itineraries.map((item, index) => {
             return (
               <Travel 

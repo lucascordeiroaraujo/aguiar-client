@@ -16,6 +16,8 @@ import { itineraries, contactPage } from '~/interfaces';
 
 import getData from '~/services';
 
+import { useRouter } from 'next/router';
+
 interface Iprops {
   itineraries: itineraries[];
   itinerariesFallBack: itineraries[];
@@ -23,11 +25,17 @@ interface Iprops {
 };
 
 export default function Index({ contact, itineraries, itinerariesFallBack }: Iprops) {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <p>Carregando...</p>;
+  }
+
   return (
     <>
       <Header contact={contact} fullBanner={true} />
 
-      {itineraries.length ? (
+      {itineraries && itineraries.length >= 1 ? (
         <Travels itineraries={itineraries} />
       ) : (
         <EmptyTravels itineraries={itinerariesFallBack} />
@@ -56,7 +64,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     'dezembro'
   ];
 
-  const citys = ['apucarana', 'arapongas', 'londrina', 'maringa', 'rolandia'];
+  const citys = ['apucarana', 'arapongas', 'cascavel', 'foz-do-iguacu', 'londrina', 'maringa', 'rolandia', 'toledo'];
 
   const paths = [] as any;
 

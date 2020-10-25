@@ -37,14 +37,14 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
     <Travel>
       <Fade delay={delay}>
         <div>
-          <Link href={`/roteiros/${slug}`}>
-            <a href={`/roteiros/${slug}`} title="Confira">
+          <Link href={`/roteiro/${slug}`}>
+            <a href={`/roteiro/${slug}`} title="Confira">
               <img 
-                src={data.image.sizes['itineraries-list']} 
-                alt={`${title} (${travelDate})`} 
-                title={`${title} (${travelDate})`} 
-                width={data.image.sizes['itineraries-list-width']} 
-                height={data.image.sizes['itineraries-list-height']} 
+                src={data.list_image.sizes['itineraries-list']} 
+                alt={`${title} (${travelDate.replace('<br/>', '')})`} 
+                title={`${title} (${travelDate.replace('<br/>', '')})`} 
+                width={data.list_image.sizes['itineraries-list-width']} 
+                height={data.list_image.sizes['itineraries-list-height']} 
               />
             </a>
           </Link>
@@ -53,10 +53,8 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
         </div>
 
         <h2>
-          <Link href={`/roteiros/${slug}`}>
-            <a href={`/roteiros/${slug}`} title="Confira">
-              {title}
-            </a>
+          <Link href={`/roteiro/${slug}`}>
+            <a href={`/roteiro/${slug}`} title="Confira" dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
         </h2>
 
@@ -76,7 +74,7 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
           </div>
 
           <a 
-            href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${title} (${travelDate})`} 
+            href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${title} (${travelDate.replace('<br/>', '')})`} 
             title="Confira"
             target="_blank"
             rel="noopener noreferrer"

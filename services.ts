@@ -28,7 +28,7 @@ const youTubeVideos = async () => {
 };
 
 const getPage = async (pageId: string) => {
-  const data = getData(`${API_URL}/acf/v3/pages/${pageId}`);
+  const data = await getData(`${API_URL}/acf/v3/pages/${pageId}`);
 
   return data;
 };
@@ -42,7 +42,19 @@ const getItineraries = async (perPage: string, city: any, month: any) => {
     url = `wp/v2/itineraries&per_page=${perPage}&_fields=title,slug,acf`
   }
 
-  const data = getData(`${API_URL}/${url}`);
+  const data = await getData(`${API_URL}/${url}`);
+
+  return data;
+};
+
+const getPostsSlug = async () => {
+  const data = await getData(`${API_URL}/wp/v2/itineraries&_fields=slug&per_page=100`);
+
+  return data;
+}
+
+const getPost = async (slug: string) => {
+  const data = await getData(`${API_URL}/wp/v2/itineraries&slug=${slug}&_fields=title,slug,acf`);
 
   return data;
 };
@@ -50,5 +62,7 @@ const getItineraries = async (perPage: string, city: any, month: any) => {
 export default {
   youTubeVideos,
   getPage,
-  getItineraries
+  getItineraries,
+  getPostsSlug,
+  getPost
 };

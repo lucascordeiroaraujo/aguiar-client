@@ -15,9 +15,9 @@ interface Iprops {
 };
 
 const cpTravels: React.FC<Iprops> = ({ itineraries }) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const { city, month } = router.query
+  const { city, month } = router.query;
 
   const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç')
 
@@ -27,7 +27,7 @@ const cpTravels: React.FC<Iprops> = ({ itineraries }) => {
         <h1>Confira os nossos roteiros</h1>
 
         {(city && month) && (
-          <p>Saindo de <strong>XXX</strong> em <strong>{monthName}</strong></p>
+          <p>Saindo de <strong>{city}</strong> em <strong>{monthName}</strong></p>
         )}
 
         <div className="content-travels">

@@ -99,7 +99,9 @@ interface itinerarieIncluded {
 };
 
 export interface itinerarieItem {
-  'pre-salve': boolean,
+  banner: wpImage,
+  list_image: wpImage,
+  sale_type: string,
   image: wpImage,
   included_resume: string,
   old_price: string,
