@@ -16,7 +16,7 @@ const getData = async (url: string) => {
 };
 
 const youTubeVideos = async () => {
-  const channelId = 'UCJy-lSzu5UzVvLn9nXvWovg';
+  const channelId = 'UCLNLmp6HIDZHqnDeXotVvQQ';
 
   const apiKey = 'AIzaSyDTz6ZMOPZ9xMn88UjSiiW61yrdvalD-pE';
 
