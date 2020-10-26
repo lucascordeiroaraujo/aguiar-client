@@ -41,12 +41,32 @@ export default styled.section`
       font-family: 'GothamUltra';
       text-transform: uppercase;
       margin-bottom: 35px;
-      &.pre-sale {
+      &.sale-type {
         padding: 10px 40px;
         border-radius: 50px;
         font-size: 26px;
         color: #ffffff;
-        background: #089ec3;
+        &.pre-sale {
+          background: #089ec3;
+        }
+        &.first-lot {
+          background: #ffd973;
+        }
+        &.second-lot {
+          background: #3b95e1;
+        }
+        &.third-lot {
+          background: #3be199;
+        }
+        &.fourth-lot {
+          background: #e17b29;
+        }
+        &.fifth-lot {
+          background: #f02698;
+        }
+        &.sold-out {
+          background: #26da18;
+        }
       }
       &.countdown {
         color: #ff1800;

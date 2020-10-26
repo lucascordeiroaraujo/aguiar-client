@@ -101,7 +101,10 @@ interface itinerarieIncluded {
 export interface itinerarieItem {
   banner: wpImage,
   list_image: wpImage,
-  sale_type: string,
+  sale_type: {
+    value: string,
+    label: string
+  },
   image: wpImage,
   included_resume: string,
   old_price: string,
@@ -109,7 +112,12 @@ export interface itinerarieItem {
   installment: string,
   output: string,
   arrival: string,
-  boarding_place: string[],
+  boarding_place: [
+    {
+      value: string,
+      label: string
+    }
+  ],
   included: itinerarieIncluded[]
 }
 

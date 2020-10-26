@@ -21,17 +21,6 @@ interface Iprops {
 };
 
 const cpTravel: React.FC<Iprops> = ({ post }) => {
-
-  const [counter, setCounter] = React.useState(0);
-
-  React.useEffect(() => {
-    setCounter(counter + 1)
-  }, []);
-
-  setInterval(() => {
-    setCounter(counter + 1)
-  }, 30000);
-
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
       return '';
@@ -51,6 +40,10 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
   } else {
     travelDate = `${start.format('DD')} a ${end.format('DD')} de ${monthsNames[end.month()].full}`;
   }
+
+  const boardingPlace = post.acf.boarding_place.map(item => {
+    return item.label;
+  });
 
   return (
     <>
@@ -75,7 +68,7 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
 
         <div>
           <Fade>
-            <span className="pre-sale">{post.acf.sale_type}</span>
+            <span className={`sale-type ${post.acf.sale_type.value}`}>{post.acf.sale_type.label}</span>
           </Fade>
 
           <Fade delay={100}>
@@ -143,13 +136,13 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
                 <div>
                   <span>Local de Embarque</span>
 
-                  <span>{post.acf.boarding_place.join(' > ')}</span>
+                  <span>{boardingPlace.join(' > ')}</span>
                 </div>
               </Fade>
             </div>
           )}
 
-          <Tada spy={counter}>
+          <Tada>
             <a 
               href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
               title="Confira"
