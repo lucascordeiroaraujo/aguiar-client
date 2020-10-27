@@ -14,10 +14,11 @@ import Newsletter from '~/components/newsletter';
 
 import Footer from '~/components/footer';
 
-import { itineraries, youtubeVideos, testimonials, contactPage } from '~/interfaces';
+import { citiesAndMonths, itineraries, youtubeVideos, testimonials, contactPage } from '~/interfaces';
 
 interface Iprops {
   homeData: {
+    citiesAndMonths: citiesAndMonths;
     itineraries: itineraries[];
     videos: youtubeVideos[];
     testimonials: testimonials;
@@ -30,7 +31,10 @@ const pageHome: React.FC<Iprops> = ({ homeData }) => (
     <Header contact={homeData.contact} />
 
     {homeData.itineraries && (
-      <Travels itineraries={homeData.itineraries} />
+      <Travels 
+        citiesAndMonths={homeData.citiesAndMonths}
+        itineraries={homeData.itineraries} 
+      />
     )}
 
     {homeData.testimonials && (

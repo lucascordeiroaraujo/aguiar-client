@@ -6,20 +6,21 @@ import Travels from './style';
 
 import Travel from '~/components/travel';
 
-import { itineraries } from '~/interfaces';
+import { citiesAndMonths, itineraries } from '~/interfaces';
 
 import { useRouter } from 'next/router';
 
 interface Iprops {
+  citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
 };
 
-const cpTravels: React.FC<Iprops> = ({ itineraries }) => {
+const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries }) => {
   const router = useRouter();
 
   const { city, month } = router.query;
 
-  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç')
+  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
 
   return (
     <Travels>
@@ -27,7 +28,7 @@ const cpTravels: React.FC<Iprops> = ({ itineraries }) => {
         <h1>Confira os nossos roteiros</h1>
 
         {(city && month) && (
-          <p>Saindo de <strong>{city}</strong> em <strong>{monthName}</strong></p>
+          <p>Saindo de <strong>{citiesAndMonths.cities[city as any].name}</strong> em <strong>{monthName}</strong></p>
         )}
 
         <div className="content-travels">

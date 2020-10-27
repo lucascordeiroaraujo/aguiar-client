@@ -2,6 +2,8 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import Loader from '~/components/loader';
+
 import Header from '~/components/header';
 
 import Travel from './components/travel';
@@ -28,7 +30,7 @@ export default function Index({ contact, post, testimonials }: Iprops) {
   const { isFallback } = useRouter();
 
   if (isFallback) {
-    return <p>Carregando...</p>;
+    return <Loader />;
   }
 
   return (

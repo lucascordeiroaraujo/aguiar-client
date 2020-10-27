@@ -8,18 +8,17 @@ import Travel from '~/components/travel';
 
 import Fade from 'react-reveal/Fade';
 
-import { itineraries } from '~/interfaces';
+import { citiesAndMonths, itineraries } from '~/interfaces';
 
 import { useRouter } from 'next/router';
 
-import { monthsNames } from '~/utils';
-
 interface Iprops {
+  citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
   fallback?: boolean;
 };
 
-const cpTravels: React.FC<Iprops> = ({ itineraries, fallback }) => {
+const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback }) => {
   const router = useRouter()
 
   const [location, setLocation] = React.useState('');
@@ -58,21 +57,9 @@ const cpTravels: React.FC<Iprops> = ({ itineraries, fallback }) => {
                   >
                     <option value="" disabled selected>selecionar</option>
 
-                    <option value="apucarana">Apucarana</option>
-
-                    <option value="arapongas">Arapongas</option>
-
-                    <option value="cascavel">Cascavel</option>
-
-                    <option value="foz-do-iguacu">Foz do Iguaçu</option>
-
-                    <option value="londrina">Londrina</option>
-
-                    <option value="maringa">Maringá</option>
-
-                    <option value="rolandia">Rolândia</option>
-
-                    <option value="toledo">Toledo</option>
+                    {Object.entries(citiesAndMonths.cities).map(item => (
+                      <option value={item[0]}>{item[1].name}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -93,8 +80,8 @@ const cpTravels: React.FC<Iprops> = ({ itineraries, fallback }) => {
                   >
                     <option value="" disabled selected>selecionar</option>
 
-                    {monthsNames.map(item => (
-                      <option value={item.full.toLowerCase().replace(/ç/gi, 'c')}>{item.full}</option>
+                    {Object.entries(citiesAndMonths.months).map(item => (
+                      <option value={item[1].month.toLowerCase().replace(/ç/gi, 'c')}>{item[1].month}</option>
                     ))}
                   </select>
                 </div>

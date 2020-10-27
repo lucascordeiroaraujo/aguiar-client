@@ -2,6 +2,8 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import Loader from '~/components/loader';
+
 import Header from '~/components/header';
 
 import Travels from './components/travels';
@@ -12,23 +14,24 @@ import Newsletter from '~/components/newsletter';
 
 import Footer from '~/components/footer';
 
-import { itineraries, contactPage } from '~/interfaces';
+import { citiesAndMonths, itineraries, contactPage } from '~/interfaces';
 
 import getData from '~/services';
 
 import { useRouter } from 'next/router';
 
 interface Iprops {
+  citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
   itinerariesFallBack: itineraries[];
   contact: contactPage;
 };
 
-export default function Index({ contact, itineraries, itinerariesFallBack }: Iprops) {
+export default function Index({ citiesAndMonths, contact, itineraries, itinerariesFallBack }: Iprops) {
   const { isFallback } = useRouter();
 
   if (isFallback) {
-    return <p>Carregando...</p>;
+    return <Loader />;
   }
 
   return (
@@ -36,9 +39,15 @@ export default function Index({ contact, itineraries, itinerariesFallBack }: Ipr
       <Header contact={contact} fullBanner={true} />
 
       {itineraries && itineraries.length >= 1 ? (
-        <Travels itineraries={itineraries} />
+        <Travels 
+          citiesAndMonths={citiesAndMonths}
+          itineraries={itineraries} 
+        />
       ) : (
-        <EmptyTravels itineraries={itinerariesFallBack} />
+        <EmptyTravels 
+          citiesAndMonths={citiesAndMonths}
+          itineraries={itinerariesFallBack} 
+        />
       )}
 
       <Newsletter />
@@ -49,27 +58,16 @@ export default function Index({ contact, itineraries, itinerariesFallBack }: Ipr
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const months = [
-    'janeiro',
-    'fevereiro',
-    'marco',
-    'abril',
-    'maio',
-    'junho',
-    'julho',
-    'agosto',
-    'setembro',
-    'outubro',
-    'novembro',
-    'dezembro'
-  ];
+  const citiesAndMonths = await getData.getCitiesAndMonths();
 
-  const citys = ['apucarana', 'arapongas', 'cascavel', 'foz-do-iguacu', 'londrina', 'maringa', 'rolandia', 'toledo'];
+  const months = Object.entries(citiesAndMonths.months).map((item: any) => {
+    return item[1].slug
+  });
 
   const paths = [] as any;
 
-  for (var i = 0; i < 12; i++) {
-    citys.forEach(city => {
+  for (var i = 0; i < citiesAndMonths.length; i++) {
+    Object.keys(citiesAndMonths.cities).forEach(city => {
       paths.push({
         params: {
           city,
@@ -90,6 +88,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      citiesAndMonths: await getData.getCitiesAndMonths(),
       itineraries: await getData.getItineraries('20', city, month),
       itinerariesFallBack: await getData.getItineraries('4', null, null),
       contact: await getData.getPage('11')

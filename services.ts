@@ -59,10 +59,17 @@ const getPost = async (slug: string) => {
   return data;
 };
 
+const getCitiesAndMonths = async () => {
+  const data = await getData(`${API_URL}/aguiar/city-month`);
+
+  return data;
+}
+
 export default {
   youTubeVideos,
   getPage,
   getItineraries,
   getPostsSlug,
-  getPost
+  getPost,
+  getCitiesAndMonths
 };

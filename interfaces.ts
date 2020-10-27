@@ -1,3 +1,19 @@
+interface monthItem {
+  month: string,
+  abbreviation: string,
+  slug: string
+};
+
+interface cityItem {
+  name: string,
+  slug: string
+};
+
+export interface citiesAndMonths {
+  months: monthItem[],
+  cities: cityItem[]
+};
+
 export interface youtubeVideos {
   kind: string,
   etag: string,

@@ -6,15 +6,16 @@ import { Container } from '~/styles/global';
 
 import Travels from '~/pages/home/components/travels';
 
-import { itineraries } from '~/interfaces';
+import { citiesAndMonths, itineraries } from '~/interfaces';
 
 import { useRouter } from 'next/router';
 
 interface Iprops {
+  citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
 };
 
-const cpEmptyTravels: React.FC<Iprops> = ({ itineraries }) => {
+const cpEmptyTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries }) => {
   const router = useRouter();
 
   const { city, month } = router.query;
@@ -26,10 +27,13 @@ const cpEmptyTravels: React.FC<Iprops> = ({ itineraries }) => {
       <Container className="container">
         <h2>Nenhuma viagem encontrada</h2>
 
-        <p>Não encontramos nenhuma viagem saindo de <strong>{city}</strong> em <strong>{monthName}</strong></p>
+        <p>Não encontramos nenhuma viagem saindo de <strong>{citiesAndMonths.cities[city as any].name}</strong> em <strong>{monthName}</strong></p>
       </Container>
 
-      <Travels itineraries={itineraries} fallback={true} />
+      <Travels 
+        citiesAndMonths={citiesAndMonths}
+        itineraries={itineraries} fallback={true} 
+      />
     </EmptyTravels>
   );
 };
