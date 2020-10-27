@@ -18,13 +18,13 @@ const getData = async (url: string) => {
 const youTubeVideos = async () => {
   const channelId = 'UCLNLmp6HIDZHqnDeXotVvQQ';
 
-  const apiKey = 'AIzaSyDTz6ZMOPZ9xMn88UjSiiW61yrdvalD-pE';
+  const apiKey = 'AIzaSyCxcItiGO2N7S02BvSodKAADocvELTn3n0';
 
   const data = await getData(
     `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=8`
   );
 
-  return data.items;
+  return data && data.items || null;
 };
 
 const getPage = async (pageId: string) => {

@@ -10,9 +10,10 @@ import { testimonialsItem } from '~/interfaces'
 
 interface Iprops {
   testimonials: testimonialsItem[];
+  hasVideos?: boolean;
 };
 
-const cpMoments: React.FC<Iprops> = ({ testimonials }) => {
+const cpMoments: React.FC<Iprops> = ({ hasVideos, testimonials }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -29,7 +30,7 @@ const cpMoments: React.FC<Iprops> = ({ testimonials }) => {
   if (!testimonials.length) return null
 
   return (
-    <Moments>
+    <Moments className={hasVideos ? 'has-videos' : 'not-has-videos'}>
       <Fade bottom>
         <h1>Momentos inesquecíveis a gente nunca esquece</h1>
       </Fade>

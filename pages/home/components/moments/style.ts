@@ -158,4 +158,7 @@ export default styled.section`
       }
     }
   }
+  &.not-has-videos {
+    margin-bottom: 100px;
+  }
 `;

@@ -38,13 +38,18 @@ const pageHome: React.FC<Iprops> = ({ homeData }) => (
     )}
 
     {homeData.testimonials && (
-      <Moments testimonials={homeData.testimonials.acf.testimonials} />
+      <Moments 
+        testimonials={homeData.testimonials.acf.testimonials} 
+        hasVideos={homeData.videos ? true : false}
+      />
     )}
 
-    <Videos 
-      videos={homeData.videos} 
-      contact={homeData.contact}
-    />
+    {homeData.videos && (
+      <Videos 
+        videos={homeData.videos} 
+        contact={homeData.contact}
+      />
+    )}
 
     <Pictures />
 

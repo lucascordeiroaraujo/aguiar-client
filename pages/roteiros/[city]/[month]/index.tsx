@@ -34,19 +34,29 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
 
   const { city, month } = query;
 
-  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
-
   if (isFallback) {
     return <Loader />;
   }
 
-  const cityName = citiesAndMonths.cities[city as any].name;
+  let seo;
 
-  const seo = {
-    seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
-    seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
-    seo_image: ''
-  };
+  if(city && month) {
+    const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
+
+    const cityName = citiesAndMonths.cities[city as any].name;
+
+    seo = {
+      seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
+      seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
+      seo_image: ''
+    };
+  } else {
+    seo = {
+      seo_title: '',
+      seo_description: '',
+      seo_image: ''
+    };
+  }
 
   return (
     <>
@@ -82,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = [] as any;
 
-  for (var i = 0; i < citiesAndMonths.length; i++) {
+  for (var i = 0; i < months.length; i++) {
     Object.keys(citiesAndMonths.cities).forEach(city => {
       paths.push({
         params: {
