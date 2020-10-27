@@ -20,7 +20,11 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries }) => {
 
   const { city, month } = router.query;
 
-  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
+  let monthName = '';
+
+  if(city && month) {
+    monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
+  }
 
   return (
     <Travels>

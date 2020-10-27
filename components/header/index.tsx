@@ -100,7 +100,7 @@ const cpHeader: React.FC<Iprops> = ({ fullBanner, bannerImage, contact }) => {
       <Container className={fullBanner ? 'full' : ''}>
         <Fade>
           <Banner>
-            {router.pathname === '/roteiros/[city]/[month]' && (
+            {(router.pathname === '/roteiros/[city]/[month]' || router.pathname === '/roteiros') && (
               <img
                 src={require(`~/public/images/placeholder/encontre-a-viagem-ideal-pra-voce.jpg`)}
                 alt="Encontre a viagem ideal pra você - Aguiar Transportes"

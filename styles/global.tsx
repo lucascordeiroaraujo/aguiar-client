@@ -129,7 +129,7 @@ export const Container = styled.div`
   position: relative;
   &.full {
     width: 100%;
-    max-width: 100%;
+    max-width: 1920px;
   }
   &.small-container {
     max-width: 1440px;

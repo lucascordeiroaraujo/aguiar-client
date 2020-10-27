@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   width: 100vw;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   &:before {
     content: '';
     position: absolute;
