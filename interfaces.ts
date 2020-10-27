@@ -55,7 +55,7 @@ export interface youtubeVideos {
   }
 };
 
-interface wpImage {
+export interface wpImage {
   ID: number,
   id: number,
   title: string,
@@ -140,7 +140,8 @@ export interface itinerarieItem extends seo {
       label: string
     }
   ],
-  included: itinerarieIncluded[]
+  included: itinerarieIncluded[],
+  pictures: wpImage[]
 }
 
 export interface itineraries {

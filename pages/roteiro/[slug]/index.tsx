@@ -43,6 +43,8 @@ export default function Index({ contact, post, testimonials }: Iprops) {
     seo_image: hasPost ? post[0].acf.seo_image : ''
   };
 
+  console.log(post[0].acf.pictures)
+
   return (
     <>
       <Seo data={seo} />
@@ -61,7 +63,9 @@ export default function Index({ contact, post, testimonials }: Iprops) {
         <Moments testimonials={testimonials.acf.testimonials} />
       )}
 
-      <Pictures />
+      {hasPost && post[0].acf.pictures && (
+        <Pictures pictures={post[0].acf.pictures} />
+      )}
 
       <Footer contact={contact} />
     </>

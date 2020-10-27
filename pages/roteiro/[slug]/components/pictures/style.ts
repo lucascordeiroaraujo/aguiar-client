@@ -32,6 +32,7 @@ export default styled.section`
     flex-wrap: wrap;
     img {
       width: 25%;
+      height: auto;
       @media (max-width: 992px) {
         width: 50%;
       }
