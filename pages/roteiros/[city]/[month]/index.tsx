@@ -2,6 +2,8 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import Seo from '~/seo';
+
 import Loader from '~/components/loader';
 
 import Header from '~/components/header';
@@ -28,14 +30,28 @@ interface Iprops {
 };
 
 export default function Index({ citiesAndMonths, contact, itineraries, itinerariesFallBack }: Iprops) {
-  const { isFallback } = useRouter();
+  const { isFallback, query } = useRouter();
+
+  const { city, month } = query;
+
+  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
 
   if (isFallback) {
     return <Loader />;
   }
 
+  const cityName = citiesAndMonths.cities[city as any].name;
+
+  const seo = {
+    seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
+    seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
+    seo_image: ''
+  };
+
   return (
     <>
+      <Seo data={seo} />
+
       <Header contact={contact} fullBanner={true} />
 
       {itineraries && itineraries.length >= 1 ? (

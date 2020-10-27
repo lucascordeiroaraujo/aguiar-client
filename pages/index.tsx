@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next';
 
+import Seo from '~/seo';
+
 import PageHome from './home';
 
 import Loader from '~/components/loader';
@@ -27,6 +29,8 @@ export default function Index(props: Iprops) {
 
   return (
     <>
+      <Seo />
+
       <PageHome homeData={props} />
     </>
   );

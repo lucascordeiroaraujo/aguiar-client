@@ -1,3 +1,9 @@
+export interface seo {
+  seo_title: string,
+  seo_description: string,
+  seo_image: string
+}
+
 interface monthItem {
   month: string,
   abbreviation: string,
@@ -114,7 +120,7 @@ interface itinerarieIncluded {
   description: string
 };
 
-export interface itinerarieItem {
+export interface itinerarieItem extends seo {
   banner: wpImage,
   list_image: wpImage,
   sale_type: {

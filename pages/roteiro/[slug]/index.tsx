@@ -2,6 +2,8 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
+import Seo from '~/seo';
+
 import Loader from '~/components/loader';
 
 import Header from '~/components/header';
@@ -33,15 +35,25 @@ export default function Index({ contact, post, testimonials }: Iprops) {
     return <Loader />;
   }
 
+  const hasPost = post && post[0];
+
+  const seo = {
+    seo_title: hasPost ? post[0].acf.seo_title : '',
+    seo_description: hasPost ? post[0].acf.seo_description : '',
+    seo_image: hasPost ? post[0].acf.seo_image : ''
+  };
+
   return (
     <>
+      <Seo data={seo} />
+
       <Header 
         fullBanner={true} 
-        bannerImage={post && post[0] ? post[0].acf.banner.url : undefined}
+        bannerImage={hasPost ? post[0].acf.banner.url : undefined}
         contact={contact} 
       />
 
-      {post && post[0] && (
+      {hasPost && (
         <Travel post={post[0]} />
       )}
 
