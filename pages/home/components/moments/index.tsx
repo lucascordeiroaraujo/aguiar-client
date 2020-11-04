@@ -56,11 +56,10 @@ const cpMoments: React.FC<Iprops> = ({ hasVideos, testimonials }) => {
             <Slider {...settings}>
               {testimonials.map((item, index) => (
                 <article key={index}>
-                  <Image 
+                  <img 
                     src={item.client_image.sizes["testimonials-person"]} 
                     alt={item.client_image.alt} 
-                    title={item.client_image.title} 
-                    unsized
+                    title={item.client_image.title}
                   />
 
                   <h2>{item.name}</h2>
