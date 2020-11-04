@@ -2,8 +2,6 @@ import React from 'react';
 
 import Moments from './style';
 
-import Image from 'next/image';
-
 import { Container } from '~/styles/global';
 
 import Slider from 'react-slick';
@@ -44,12 +42,11 @@ const cpMoments: React.FC<Iprops> = ({ hasVideos, testimonials }) => {
           <div className="images">
             <Slider {...settings}>
               {testimonials.map((item, index) => (
-                <Image 
+                <img
                     key={index}
                     src={item.travel_image.sizes.testimonials} 
                     alt={item.travel_image.alt} 
                     title={item.travel_image.title} 
-                    unsized
                   />
               ))}
             </Slider>
