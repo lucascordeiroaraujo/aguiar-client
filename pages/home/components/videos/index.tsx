@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Container } from '~/styles/global';
 
+import Image from 'next/image';
+
 import Videos from './style';
 
 import Fade from 'react-reveal/Fade';
@@ -58,10 +60,11 @@ const pageVideos: React.FC<Iprops> = ({ videos, contact }) => {
                   <h2>{video.snippet.title}</h2>
 
                   <button onClick={() => handleChangeVideo(video.id.videoId)}>
-                    <img
+                    <Image
                       src={`https://img.youtube.com/vi/${video.id.videoId}/mqdefault.jpg`}
                       alt={video.snippet.title}
                       title={video.snippet.title}
+                      unsized
                     />
                   </button>
                 </article>

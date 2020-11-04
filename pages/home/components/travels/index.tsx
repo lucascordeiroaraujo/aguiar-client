@@ -57,8 +57,8 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
                   >
                     <option value="" disabled selected>selecionar</option>
 
-                    {Object.entries(citiesAndMonths.cities).map(item => (
-                      <option value={item[0]}>{item[1].name}</option>
+                    {Object.entries(citiesAndMonths.cities).map((item, index) => (
+                      <option key={index} value={item[0]}>{item[1].name}</option>
                     ))}
                   </select>
                 </div>
@@ -80,8 +80,8 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
                   >
                     <option value="" disabled selected>selecionar</option>
 
-                    {Object.entries(citiesAndMonths.months).map(item => (
-                      <option value={item[1].month.toLowerCase().replace(/ç/gi, 'c')}>{item[1].month}</option>
+                    {Object.entries(citiesAndMonths.months).map((item, index) => (
+                      <option key={index} value={item[1].month.toLowerCase().replace(/ç/gi, 'c')}>{item[1].month}</option>
                     ))}
                   </select>
                 </div>

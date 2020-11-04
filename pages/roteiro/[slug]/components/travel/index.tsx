@@ -6,6 +6,8 @@ import { Container } from '~/styles/global';
 
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 import Fade from 'react-reveal/Fade';
 
 import Tada from 'react-reveal/Tada';
@@ -60,16 +62,15 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
       <Container className="full">
         <Travel>
           {post.acf.image && (
-            <img 
+            <Image 
               src={post.acf.image.sizes.itinerarie} 
               alt={`${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
               title={`${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
-              width={post.acf.image.sizes["itinerarie-width"]}
-              height={post.acf.image.sizes["itinerarie-height"]}
+              unsized
             />
           )}
 
-          <div>
+          <div className="travel-info">
             <Fade>
               <span className={`sale-type ${post.acf.sale_type.value}`}>{post.acf.sale_type.label}</span>
             </Fade>

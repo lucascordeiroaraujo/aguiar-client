@@ -22,15 +22,18 @@ export default styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 125px;
-  & > img {
+  & > div:first-child {
     width: 45%;
-    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
     @media (max-width: 992px) { 
       width: 100%;
       margin-bottom: 20px;
     }
   }
-  & > div {
+  div.travel-info {
     width: 500px;
     margin-left: 5%;
     display: flex;

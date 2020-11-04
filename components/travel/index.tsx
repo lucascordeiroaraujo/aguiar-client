@@ -4,6 +4,8 @@ import Travel from './style';
 
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 import Fade from 'react-reveal/Fade';
 
 import { itinerarieItem } from '~/interfaces';
@@ -39,12 +41,11 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
         <div>
           <Link href={`/roteiro/${slug}`}>
             <a href={`/roteiro/${slug}`} title="Confira">
-              <img 
+              <Image 
                 src={data.list_image.sizes['itineraries-list']} 
                 alt={`${title} (${travelDate.replace('<br/>', '')})`} 
                 title={`${title} (${travelDate.replace('<br/>', '')})`} 
-                width={data.list_image.sizes['itineraries-list-width']} 
-                height={data.list_image.sizes['itineraries-list-height']} 
+                unsized
               />
             </a>
           </Link>

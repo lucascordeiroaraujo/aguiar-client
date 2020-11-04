@@ -6,6 +6,8 @@ import { Container } from '~/styles/global';
 
 import Link from 'next/link';
 
+import Image from 'next/image';
+
 import {useRouter} from 'next/router';
 
 import Fade from 'react-reveal/Fade';
@@ -121,7 +123,7 @@ const cpHeader: React.FC<Iprops> = ({ fullBanner, bannerImage, contact }) => {
             )}
 
             {bannerImage && (
-              <img src={bannerImage} alt="Aguiar Transportes" title="Aguiar Transportes" />
+              <Image src={bannerImage} alt="Aguiar Transportes" title="Aguiar Transportes" unsized />
             )}
           </Banner>
         </Fade>

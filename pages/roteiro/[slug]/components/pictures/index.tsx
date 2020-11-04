@@ -2,6 +2,8 @@ import React from 'react'
 
 import Pictures from './style';
 
+import Image from 'next/image';
+
 import { Container } from '~/styles/global';
 
 import Fade from 'react-reveal/Fade';
@@ -22,12 +24,11 @@ const cpPictures: React.FC<Iprops> = ({ pictures }) => (
       <div className="content-pictures">
         {pictures.map((item, index) => (
           <Fade key={index}>
-            <img 
+            <Image 
               src={item.sizes["itinerarie-pictures"]} 
               alt={item.alt} 
               title={item.title} 
-              width={item.sizes["itinerarie-pictures-width"]}
-              height={item.sizes["itinerarie-pictures-height"]}
+              unsized
             />
           </Fade>
         ))}

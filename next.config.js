@@ -13,6 +13,10 @@ const nextConfig = {
     };
     return config;
   },
+  images: {
+    deviceSizes: [320, 640, 768, 1024, 1600],
+    domains: ['viagensaguiar-com-br.umbler.net'],
+  },
 };
 
 module.exports = withPlugins(
