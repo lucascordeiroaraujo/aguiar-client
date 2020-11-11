@@ -66,7 +66,7 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
                 <small>R$</small> {data.price}
               </strong>
 
-              <span>{data.installment}</span>
+              <span>{data.installment.toLowerCase()}</span>
             </div>
 
             <div>
