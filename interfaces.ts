@@ -121,27 +121,27 @@ interface itinerarieIncluded {
 };
 
 export interface itinerarieItem extends seo {
-  banner: wpImage,
+  banner?: wpImage,
   list_image: wpImage,
-  sale_type: {
+  sale_type?: {
     value: string,
     label: string
   },
-  image: wpImage,
+  image?: wpImage,
   included_resume: string,
-  old_price: string,
+  old_price?: string,
   price: string,
   installment: string,
   output: string,
   arrival: string,
-  boarding_place: [
+  boarding_place?: [
     {
       value: string,
       label: string
     }
   ],
-  included: itinerarieIncluded[],
-  pictures: wpImage[]
+  included?: itinerarieIncluded[],
+  pictures?: wpImage[]
 }
 
 export interface itineraries {

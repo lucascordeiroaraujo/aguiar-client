@@ -23,14 +23,16 @@ const cpPictures: React.FC<Iprops> = ({ pictures }) => (
 
       <div className="content-pictures">
         {pictures.map((item, index) => (
-          <Fade key={index}>
-            <Image 
-              src={item.sizes["itinerarie-pictures"]} 
-              alt={item.alt} 
-              title={item.title} 
-              unsized
-            />
-          </Fade>
+          <div key={index}>
+            <Fade>
+              <Image 
+                src={item.sizes["itinerarie-pictures"]} 
+                alt={item.alt} 
+                title={item.title} 
+                unsized
+              />
+            </Fade>
+          </div>
         ))}
       </div>
     </Pictures>

@@ -45,9 +45,9 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
     travelDate = `${start.format('DD')} a ${end.format('DD')} de ${monthsNames[end.month()].full}`;
   }
 
-  const boardingPlace = post.acf.boarding_place.map(item => {
+  const boardingPlace = post.acf.boarding_place ? post.acf.boarding_place.map(item => {
     return item.label;
-  });
+  }) : null;
 
   return (
     <>
@@ -71,9 +71,11 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
           )}
 
           <div className="travel-info">
-            <Fade>
-              <span className={`sale-type ${post.acf.sale_type.value}`}>{post.acf.sale_type.label}</span>
-            </Fade>
+            {post.acf.sale_type && (
+              <Fade>
+                <span className={`sale-type ${post.acf.sale_type.value}`}>{post.acf.sale_type.label}</span>
+              </Fade>
+            )}
 
             <Fade delay={100}>
               <span className="countdown">
@@ -132,7 +134,7 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
               </div>
             )}
 
-            {post.acf.boarding_place && (
+            {boardingPlace && (
               <div className="boarding-location">
                 <i className="icon-location"></i> 
                 

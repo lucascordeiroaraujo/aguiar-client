@@ -24,17 +24,20 @@ export default styled.section`
       }
     }
   }
-  div {
+  div.content-pictures {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    img {
+    & > div {
       width: 25%;
-      height: auto;
-      @media (max-width: 992px) {
-        width: 50%;
+      img {
+        width: 100%;
+        height: auto;
+        @media (max-width: 992px) {
+          width: 50%;
+        }
       }
     }
   }

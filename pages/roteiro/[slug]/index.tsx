@@ -51,7 +51,7 @@ export default function Index({ contact, post, testimonials }: Iprops) {
 
       <Header 
         fullBanner={true} 
-        bannerImage={hasPost ? post[0].acf.banner.url : undefined}
+        bannerImage={hasPost ? (post[0].acf.banner ? post[0].acf.banner.url : undefined) : undefined}
         contact={contact} 
       />
 
