@@ -33,7 +33,7 @@ const pageHome: React.FC<Iprops> = ({ homeData }) => (
     {homeData.itineraries && (
       <Travels 
         citiesAndMonths={homeData.citiesAndMonths}
-        itineraries={homeData.itineraries} 
+        itineraries={homeData.itineraries.sort(() => Math.random() - 0.5)} 
       />
     )}
 

@@ -78,6 +78,9 @@ export default styled.section`
         @media (min-width: 1920px) {
           font-size: 48px;
         }
+        @media (max-width: 992px) { 
+          text-align: center;
+        }
       }
     }
     div.price {

@@ -50,7 +50,6 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
 
       {itineraries && itineraries.length >= 1 ? (
         <Travels 
-          citiesAndMonths={citiesAndMonths}
           itineraries={itineraries} 
         />
       ) : (
@@ -66,32 +65,6 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
     </>
   );
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const citiesAndMonths = await getData.getCitiesAndMonths();
-
-//   const months = Object.entries(citiesAndMonths.months).map((item: any) => {
-//     return item[1].slug
-//   });
-
-//   const paths = [] as any;
-
-//   for (var i = 0; i < months.length; i++) {
-//     Object.keys(citiesAndMonths.cities).forEach(city => {
-//       paths.push({
-//         params: {
-//           city,
-//           month: months[i]
-//         }
-//       })
-//     })
-//   }
-
-//   return {
-//     paths,
-//     fallback: true
-//   }
-// }
 
 export const getStaticProps: GetStaticProps = async () => {
   return {

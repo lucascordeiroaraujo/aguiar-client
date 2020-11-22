@@ -40,7 +40,7 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
       <Fade delay={delay}>
         <div>
           <Link href={`/roteiro/${slug}`}>
-            <a href={`/roteiro/${slug}`} title="Confira">
+            <a title="Confira">
               <Image 
                 src={data.list_image.sizes['itineraries-list']} 
                 alt={`${title} (${travelDate.replace('<br/>', '')})`} 
@@ -55,7 +55,7 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
 
         <h2>
           <Link href={`/roteiro/${slug}`}>
-            <a href={`/roteiro/${slug}`} title="Confira" dangerouslySetInnerHTML={{ __html: title }} />
+            <a title="Confira" dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
         </h2>
 
@@ -74,15 +74,14 @@ const cpTravel: React.FC<Iprops> = ({ delay, slug, title, data }) => {
             </div>
           </div>
 
-          <a 
-            href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${title} (${travelDate.replace('<br/>', '')})`} 
-            title="Confira"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="buy"
-          >
-            <span>Quero comprar</span>
-          </a>
+          <Link href={`/roteiro/${slug}`}>
+            <a 
+              title="Confira"
+              className="buy"
+            >
+              <span>+ Detalhes</span>
+            </a>
+          </Link>
         </div>
       </Fade>
     </Travel>

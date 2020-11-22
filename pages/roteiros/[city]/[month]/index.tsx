@@ -38,25 +38,15 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
     return <Loader />;
   }
 
-  let seo;
+  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
 
-  if(city && month) {
-    const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
+  const cityName = Object.values(citiesAndMonths.cities).filter(item => item.slug === city)[0].name
 
-    const cityName = citiesAndMonths.cities[city as any].name;
-
-    seo = {
-      seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
-      seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
-      seo_image: ''
-    };
-  } else {
-    seo = {
-      seo_title: '',
-      seo_description: '',
-      seo_image: ''
-    };
-  }
+  const seo = {
+    seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
+    seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
+    seo_image: ''
+  };
 
   return (
     <>
@@ -66,13 +56,16 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
 
       {itineraries && itineraries.length >= 1 ? (
         <Travels 
-          citiesAndMonths={citiesAndMonths}
           itineraries={itineraries} 
+          month={monthName}
+          city={cityName}
         />
       ) : (
         <EmptyTravels 
           citiesAndMonths={citiesAndMonths}
           itineraries={itinerariesFallBack} 
+          month={monthName}
+          city={cityName}
         />
       )}
 
@@ -93,10 +86,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [] as any;
 
   for (var i = 0; i < months.length; i++) {
-    Object.keys(citiesAndMonths.cities).forEach(city => {
+    Object.entries(citiesAndMonths.cities).forEach((city: any) => {
       paths.push({
         params: {
-          city,
+          city: city[1].slug,
           month: months[i]
         }
       })

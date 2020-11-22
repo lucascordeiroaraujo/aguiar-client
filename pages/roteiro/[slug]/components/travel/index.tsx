@@ -80,7 +80,7 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
             <Fade delay={100}>
               <span className="countdown">
                 <Countdown
-                  date={`${post.acf.output} 00:00:01`}
+                  date={`${post.acf.output}T00:00:01`}
                   renderer={renderer}
                 />
               </span>
@@ -106,10 +106,10 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
 
             <div className="dates">
               <Fade>
-              <span>
-                <small>saída</small>
-                {start.format('DD')}/{start.format('MM')}
-              </span>
+                <span>
+                  <small>saída</small>
+                  {start.format('DD')}/{start.format('MM')}
+                </span>
               </Fade>
 
               <Fade delay={100}>

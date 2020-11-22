@@ -35,9 +35,9 @@ export default styled.section`
       img {
         width: 100%;
         height: auto;
-        @media (max-width: 992px) {
-          width: 50%;
-        }
+      }
+      @media (max-width: 992px) {
+        width: 50%;
       }
     }
   }

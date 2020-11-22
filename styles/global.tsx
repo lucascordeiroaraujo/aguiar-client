@@ -67,7 +67,7 @@ export default createGlobalStyle`
       url(${require('./fonts/FarmhandSansRegular/FarmhandSansRegular.svg')}) format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
   }
   @font-face{
     font-family: 'GothamBold';
@@ -76,7 +76,7 @@ export default createGlobalStyle`
       url(${require('./fonts/GothamBold/GothamBold.svg')}) format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
   }
   @font-face{
     font-family: 'GothamBook';
@@ -85,7 +85,7 @@ export default createGlobalStyle`
       url(${require('./fonts/GothamBook/GothamBook.svg')}) format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
   }
   @font-face{
     font-family: 'GothamMedium';
@@ -94,7 +94,7 @@ export default createGlobalStyle`
       url(${require('./fonts/GothamMedium/GothamMedium.svg')}) format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
   }
   @font-face{
     font-family: 'GothamUltra';
@@ -103,7 +103,7 @@ export default createGlobalStyle`
       url(${require('./fonts/GothamUltra/GothamUltra.svg')}) format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
   }
   #nprogress {
 		pointer-events: none;

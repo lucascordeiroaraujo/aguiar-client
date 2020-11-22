@@ -8,40 +8,28 @@ import Travels from '~/pages/home/components/travels';
 
 import { citiesAndMonths, itineraries } from '~/interfaces';
 
-import { useRouter } from 'next/router';
-
 interface Iprops {
   citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
+  city?: string;
+  month?: string;
 };
 
-const cpEmptyTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries }) => {
-  const router = useRouter();
+const cpEmptyTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, city, month }) => (
+  <EmptyTravels>
+    <Container className="container">
+      <h2>Nenhuma viagem encontrada</h2>
 
-  const { city, month } = router.query;
+      {(city && month) && (
+        <p>Não encontramos nenhuma viagem saindo de <strong>{city}</strong> em <strong>{month}</strong></p>
+      )}
+    </Container>
 
-  let monthName = ''
-
-  if(city && month) {
-    monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
-  }
-
-  return (
-    <EmptyTravels>
-      <Container className="container">
-        <h2>Nenhuma viagem encontrada</h2>
-
-        {(city && month) && (
-          <p>Não encontramos nenhuma viagem saindo de <strong>{citiesAndMonths.cities[city as any].name}</strong> em <strong>{monthName}</strong></p>
-        )}
-      </Container>
-
-      <Travels 
-        citiesAndMonths={citiesAndMonths}
-        itineraries={itineraries} fallback={true} 
-      />
-    </EmptyTravels>
-  );
-};
+    <Travels 
+      citiesAndMonths={citiesAndMonths}
+      itineraries={itineraries} fallback={true} 
+    />
+  </EmptyTravels>
+);
 
 export default cpEmptyTravels;

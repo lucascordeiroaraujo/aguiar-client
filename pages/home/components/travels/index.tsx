@@ -21,14 +21,55 @@ interface Iprops {
 const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback }) => {
   const router = useRouter()
 
-  const [location, setLocation] = React.useState('');
-
-  const [month, setMonth] = React.useState('');
+  const [form, setForm] = React.useState({
+    location: {
+      required: false,
+      value: ''
+    },
+    month: {
+      required: false,
+      value: ''
+    }
+  });
 
   const searchItineraries = (event: any) => {
     event.preventDefault();
 
-    router.push(`/roteiros/${location}/${month}`)
+    const { location, month } = form;
+
+    if(!location.value && !month.value) {
+      router.push('/roteiros').then(() => window.scrollTo(0, 133));
+    }else {
+      router.push(`/roteiros/${location.value}/${month.value}`).then(() => window.scrollTo(0, 133));
+    }
+  };
+
+  const handleChangeLocation = (value: string) => {
+    setForm({
+      ...form,
+      location: {
+        ...form.location,
+        value
+      },
+      month: {
+        ...form.month,
+        required: true
+      }
+    });
+  };
+
+  const handleChangeMonth = (value: string) => {
+    setForm({
+      ...form,
+      location: {
+        ...form.location,
+        required: true
+      },
+      month: {
+        ...form.month,
+        value
+      }
+    });
   };
 
   return (
@@ -51,14 +92,14 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
 
                 <div>
                   <select 
-                    required
-                    value={location} 
-                    onChange={e => setLocation(e.target.value)}
+                    required={form.location.required}
+                    value={form.location.value} 
+                    onChange={e => handleChangeLocation(e.target.value)}
                   >
                     <option value="" disabled selected>selecionar</option>
 
                     {Object.entries(citiesAndMonths.cities).map((item, index) => (
-                      <option key={index} value={item[0]}>{item[1].name}</option>
+                      <option key={index} value={item[1].slug}>{item[1].name}</option>
                     ))}
                   </select>
                 </div>
@@ -74,9 +115,9 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
 
                 <div>
                   <select 
-                    required
-                    value={month} 
-                    onChange={e => setMonth(e.target.value)}
+                    required={form.month.required}
+                    value={form.month.value} 
+                    onChange={e => handleChangeMonth(e.target.value)}
                   >
                     <option value="" disabled selected>selecionar</option>
 
