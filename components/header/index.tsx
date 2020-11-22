@@ -103,22 +103,21 @@ const cpHeader: React.FC<Iprops> = ({ fullBanner, bannerImage, contact }) => {
         <Fade>
           <Banner>
             {(router.pathname === '/roteiros/[city]/[month]' || router.pathname === '/roteiros') && (
-              <img
+              <Image
                 src={require(`~/public/images/placeholder/encontre-a-viagem-ideal-pra-voce.jpg`)}
                 alt="Encontre a viagem ideal pra você - Aguiar Transportes"
                 title="Encontre a viagem ideal pra você - Aguiar Transportes"
-                width="1680"
-                height="780"
+                unsized
               />
             )}
 
             {router.pathname === '/' && (
-              <img
+              <Image
                 src={require(`~/public/images/placeholder/grandes-experiencias-em-cada-viagem.jpg`)}
                 alt="Grandes experiências em cada viagem - Aguiar Transportes"
                 title="Grandes experiências em cada viagem - Aguiar Transportes"
-                width="1680"
-                height="780"
+                
+                unsized
               />
             )}
 
