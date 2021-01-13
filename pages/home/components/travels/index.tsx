@@ -16,20 +16,24 @@ interface Iprops {
   citiesAndMonths: citiesAndMonths;
   itineraries: itineraries[];
   fallback?: boolean;
-};
+}
 
-const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback }) => {
-  const router = useRouter()
+const cpTravels: React.FC<Iprops> = ({
+  citiesAndMonths,
+  itineraries,
+  fallback,
+}) => {
+  const router = useRouter();
 
   const [form, setForm] = React.useState({
     location: {
       required: false,
-      value: ''
+      value: '',
     },
     month: {
       required: false,
-      value: ''
-    }
+      value: '',
+    },
   });
 
   const searchItineraries = (event: any) => {
@@ -37,10 +41,12 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
 
     const { location, month } = form;
 
-    if(!location.value && !month.value) {
+    if (!location.value && !month.value) {
       router.push('/roteiros').then(() => window.scrollTo(0, 133));
-    }else {
-      router.push(`/roteiros/${location.value}/${month.value}`).then(() => window.scrollTo(0, 133));
+    } else {
+      router
+        .push(`/roteiros/${location.value}`)
+        .then(() => window.scrollTo(0, 133));
     }
   };
 
@@ -49,26 +55,8 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
       ...form,
       location: {
         ...form.location,
-        value
+        value,
       },
-      month: {
-        ...form.month,
-        required: true
-      }
-    });
-  };
-
-  const handleChangeMonth = (value: string) => {
-    setForm({
-      ...form,
-      location: {
-        ...form.location,
-        required: true
-      },
-      month: {
-        ...form.month,
-        value
-      }
     });
   };
 
@@ -77,7 +65,10 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
       <Container className="container">
         {!fallback && (
           <Fade bottom>
-            <h1>Confira as melhores<br/> viagens pra você!</h1>
+            <h1>
+              Confira as melhores
+              <br /> viagens pra você!
+            </h1>
           </Fade>
         )}
 
@@ -86,48 +77,65 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
             <Fade>
               <div>
                 <label htmlFor="city">
-                  <i className="icon-location"></i> 
+                  <i className="icon-location"></i>
                   sua cidade
                 </label>
 
                 <div>
-                  <select 
+                  <select
                     required={form.location.required}
-                    value={form.location.value} 
-                    onChange={e => handleChangeLocation(e.target.value)}
+                    value={form.location.value}
+                    onChange={(e) => handleChangeLocation(e.target.value)}
                   >
-                    <option value="" disabled selected>selecionar</option>
+                    <option value="" disabled selected>
+                      selecionar
+                    </option>
 
-                    {Object.entries(citiesAndMonths.cities).map((item, index) => (
-                      <option key={index} value={item[1].slug}>{item[1].name}</option>
-                    ))}
+                    {Object.entries(citiesAndMonths.cities).map(
+                      (item, index) => (
+                        <option key={index} value={item[1].slug}>
+                          {item[1].name}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
               </div>
             </Fade>
 
-            <Fade delay={200}>
+            {/* <Fade delay={200}>
               <div>
                 <label htmlFor="city">
-                  <i className="icon-calendar"></i> 
+                  <i className="icon-calendar"></i>
                   selecione o mês de viagem
                 </label>
 
                 <div>
-                  <select 
+                  <select
                     required={form.month.required}
-                    value={form.month.value} 
-                    onChange={e => handleChangeMonth(e.target.value)}
+                    value={form.month.value}
+                    onChange={(e) => handleChangeMonth(e.target.value)}
                   >
-                    <option value="" disabled selected>selecionar</option>
+                    <option value="" disabled selected>
+                      selecionar
+                    </option>
 
-                    {Object.entries(citiesAndMonths.months).map((item, index) => (
-                      <option key={index} value={item[1].month.toLowerCase().replace(/ç/gi, 'c')}>{item[1].month}</option>
-                    ))}
+                    {Object.entries(citiesAndMonths.months).map(
+                      (item, index) => (
+                        <option
+                          key={index}
+                          value={item[1].month
+                            .toLowerCase()
+                            .replace(/ç/gi, 'c')}
+                        >
+                          {item[1].month}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
               </div>
-            </Fade>
+            </Fade> */}
           </div>
 
           <input type="submit" value="Ver todos os destinos" />
@@ -136,14 +144,14 @@ const cpTravels: React.FC<Iprops> = ({ citiesAndMonths, itineraries, fallback })
         <div className="content-travels">
           {itineraries.map((item, index) => {
             return (
-              <Travel 
+              <Travel
                 key={index}
                 slug={item.slug}
                 title={item.title.rendered}
                 data={item.acf}
                 delay={0}
               />
-            )
+            );
           })}
         </div>
       </Container>

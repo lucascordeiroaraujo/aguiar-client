@@ -6,7 +6,13 @@ import PageHome from './home';
 
 import Loader from '~/components/loader';
 
-import { citiesAndMonths, itineraries, youtubeVideos, testimonials, contactPage } from '~/interfaces';
+import {
+  citiesAndMonths,
+  itineraries,
+  youtubeVideos,
+  testimonials,
+  contactPage,
+} from '~/interfaces';
 
 import { useRouter } from 'next/router';
 
@@ -18,7 +24,7 @@ interface Iprops {
   videos: youtubeVideos[];
   testimonials: testimonials;
   contact: contactPage;
-};
+}
 
 export default function Index(props: Iprops) {
   const { isFallback } = useRouter();
@@ -34,17 +40,17 @@ export default function Index(props: Iprops) {
       <PageHome homeData={props} />
     </>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       citiesAndMonths: await getData.getCitiesAndMonths(),
-      itineraries: await getData.getItineraries('4', null, null),
+      itineraries: await getData.getItineraries('4', null),
       videos: await getData.youTubeVideos(),
       testimonials: await getData.getPage('7'),
-      contact: await getData.getPage('11')
+      contact: await getData.getPage('11'),
     },
-    revalidate: 10
+    revalidate: 10,
   };
 };

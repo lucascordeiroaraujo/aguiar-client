@@ -37,7 +37,8 @@ export default styled.section`
         align-items: flex-start;
         flex-wrap: wrap;
         & > div {
-          width: 255px;
+          width: 100%;
+          max-width: 400px;
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;

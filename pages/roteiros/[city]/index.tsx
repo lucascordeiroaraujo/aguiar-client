@@ -10,7 +10,7 @@ import Header from '~/components/header';
 
 import Travels from './components/travels';
 
-import EmptyTravels from './components/emptyTravels'
+import EmptyTravels from './components/emptyTravels';
 
 import Newsletter from '~/components/newsletter';
 
@@ -27,25 +27,30 @@ interface Iprops {
   itineraries: itineraries[];
   itinerariesFallBack: itineraries[];
   contact: contactPage;
-};
+}
 
-export default function Index({ citiesAndMonths, contact, itineraries, itinerariesFallBack }: Iprops) {
+export default function Index({
+  citiesAndMonths,
+  contact,
+  itineraries,
+  itinerariesFallBack,
+}: Iprops) {
   const { isFallback, query } = useRouter();
 
-  const { city, month } = query;
+  const { city } = query;
 
   if (isFallback) {
     return <Loader />;
   }
 
-  const monthName = `${(month as any).charAt(0).toUpperCase()}${(month as any).slice(1)}`.replace(/c/gi, 'ç');
-
-  const cityName = Object.values(citiesAndMonths.cities).filter(item => item.slug === city)[0].name
+  const cityName = Object.values(citiesAndMonths.cities).filter(
+    (item) => item.slug === city
+  )[0].name;
 
   const seo = {
-    seo_title: `Saindo de ${cityName} em ${monthName} - Aguiar Viagens`,
-    seo_description: `Confira nossas viagens saíndo de ${cityName} em ${monthName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
-    seo_image: ''
+    seo_title: `Saindo de ${cityName} - Aguiar Viagens`,
+    seo_description: `Confira nossas viagens saíndo de ${cityName}. Encontre a viagem ideal pra você com a Aguiar Viagens`,
+    seo_image: '',
   };
 
   return (
@@ -55,16 +60,11 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
       <Header contact={contact} fullBanner={true} />
 
       {itineraries && itineraries.length >= 1 ? (
-        <Travels 
-          itineraries={itineraries} 
-          month={monthName}
-          city={cityName}
-        />
+        <Travels itineraries={itineraries} city={cityName} />
       ) : (
-        <EmptyTravels 
+        <EmptyTravels
           citiesAndMonths={citiesAndMonths}
-          itineraries={itinerariesFallBack} 
-          month={monthName}
+          itineraries={itinerariesFallBack}
           city={cityName}
         />
       )}
@@ -74,13 +74,13 @@ export default function Index({ citiesAndMonths, contact, itineraries, itinerari
       <Footer contact={contact} />
     </>
   );
-};
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const citiesAndMonths = await getData.getCitiesAndMonths();
 
   const months = Object.entries(citiesAndMonths.months).map((item: any) => {
-    return item[1].slug
+    return item[1].slug;
   });
 
   const paths = [] as any;
@@ -90,28 +90,28 @@ export const getStaticPaths: GetStaticPaths = async () => {
       paths.push({
         params: {
           city: city[1].slug,
-          month: months[i]
-        }
-      })
-    })
+          month: months[i],
+        },
+      });
+    });
   }
 
   return {
     paths,
-    fallback: true
-  }
-}
+    fallback: true,
+  };
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { city, month } = context.params as any;
+  const { city } = context.params as any;
 
   return {
     props: {
       citiesAndMonths: await getData.getCitiesAndMonths(),
-      itineraries: await getData.getItineraries('20', city, month),
-      itinerariesFallBack: await getData.getItineraries('4', null, null),
-      contact: await getData.getPage('11')
+      itineraries: await getData.getItineraries('20', city),
+      itinerariesFallBack: await getData.getItineraries('4', null),
+      contact: await getData.getPage('11'),
     },
-    revalidate: 10
+    revalidate: 10,
   };
 };

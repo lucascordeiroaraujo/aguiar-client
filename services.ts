@@ -33,11 +33,11 @@ const getPage = async (pageId: string) => {
   return data;
 };
 
-const getItineraries = async (perPage: string, city: any, month: any) => {
+const getItineraries = async (perPage: string, city: any) => {
   let url = ''
 
-  if (city && month) {
-    url = `aguiar/itineraries/${perPage}/${city}/${month}`
+  if (city) {
+    url = `aguiar/itineraries/${perPage}/${city}`
   } else {
     url = `wp/v2/itineraries&per_page=${perPage}&_fields=title,slug,acf`
   }
