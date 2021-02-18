@@ -22,7 +22,7 @@ import dayjs from 'dayjs';
 
 interface Iprops {
   post: itineraries;
-};
+}
 
 const cpTravel: React.FC<Iprops> = ({ post }) => {
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
@@ -39,22 +39,27 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
 
   let travelDate = '';
 
-  if(end.month() !== start.month()) {
-    travelDate = `${start.format('DD')} de ${monthsNames[start.month()].small} a<br/> ${end.format('DD')} de ${monthsNames[end.month()].small}`;
+  if (end.month() !== start.month()) {
+    travelDate = `${start.format('DD')} de ${
+      monthsNames[start.month()].small
+    } a<br/> ${end.format('DD')} de ${monthsNames[end.month()].small}`;
   } else {
-    travelDate = `${start.format('DD')} a ${end.format('DD')} de ${monthsNames[end.month()].full}`;
+    travelDate = `${start.format('DD')} a ${end.format('DD')} de ${
+      monthsNames[end.month()].full
+    }`;
   }
 
-  const boardingPlace = post.acf.boarding_place ? post.acf.boarding_place.map(item => {
-    return item.label;
-  }) : null;
+  const boardingPlace = post.acf.boarding_place
+    ? post.acf.boarding_place.map((item) => {
+        return item.label;
+      })
+    : null;
 
   return (
     <>
       <Link href="/">
         <PageBack title="Voltar">
           <i className="icon-left-arrow"></i>
-
           voltar na página anterior
         </PageBack>
       </Link>
@@ -62,10 +67,16 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
       <Container className="full">
         <Travel>
           {post.acf.image && (
-            <Image 
-              src={post.acf.image.sizes.itinerarie} 
-              alt={`${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
-              title={`${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
+            <Image
+              src={post.acf.image.sizes.itinerarie}
+              alt={`${post.title.rendered} (${travelDate.replace(
+                '<br/>',
+                ''
+              )})`}
+              title={`${post.title.rendered} (${travelDate.replace(
+                '<br/>',
+                ''
+              )})`}
               unsized
             />
           )}
@@ -73,7 +84,9 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
           <div className="travel-info">
             {post.acf.sale_type && (
               <Fade>
-                <span className={`sale-type ${post.acf.sale_type.value}`}>{post.acf.sale_type.label}</span>
+                <span className={`sale-type ${post.acf.sale_type.value}`}>
+                  {post.acf.sale_type.label}
+                </span>
               </Fade>
             )}
 
@@ -90,7 +103,11 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
               {post.acf.old_price && (
                 <Fade bottom>
                   <div className="old-price">
-                    <span>De<br/>R$</span>
+                    <span>
+                      De
+                      <br />
+                      R$
+                    </span>
                     <span>{post.acf.old_price}</span>
                   </div>
                 </Fade>
@@ -98,7 +115,11 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
 
               <Fade delay={100} bottom>
                 <div className="current-price">
-                  <span>Por<br/><strong>R$</strong></span>
+                  <span>
+                    Por
+                    <br />
+                    <strong>R$</strong>
+                  </span>
                   <span>{post.acf.price}</span>
                 </div>
               </Fade>
@@ -120,10 +141,10 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
               </Fade>
             </div>
 
-            {(post.acf.included && Object.keys(post.acf.included).length !== 0) && (
+            {post.acf.included && Object.keys(post.acf.included).length !== 0 && (
               <div className="included-in">
                 <span>incluso</span>
-                
+
                 <ul>
                   {post.acf.included.map((item, index) => (
                     <Fade key={index}>
@@ -136,8 +157,8 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
 
             {boardingPlace && (
               <div className="boarding-location">
-                <i className="icon-location"></i> 
-                
+                <i className="icon-location"></i>
+
                 <Fade>
                   <div>
                     <span>Local de Embarque</span>
@@ -149,13 +170,15 @@ const cpTravel: React.FC<Iprops> = ({ post }) => {
             )}
 
             <Tada>
-              <a 
-                href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${post.title.rendered} (${travelDate.replace('<br/>', '')})`} 
+              <a
+                href={`https://api.whatsapp.com/send?phone=+554398406307&text=Olá, visitei seu site e tenho interesse nessa viagem: ${
+                  post.title.rendered
+                } (${travelDate.replace('<br/>', '')})`}
                 title="Confira"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Comprar agora
+                Falar com agente de viagens
               </a>
             </Tada>
           </div>

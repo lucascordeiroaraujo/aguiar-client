@@ -262,12 +262,17 @@ export default styled.section`
       text-transform: uppercase;
       color: #ffffff;
       border-radius: 50px;
-      font-size: 20px;
+      font-size: 16px;
+      letter-spacing: 1px;
       padding: 25px 30px;
       transition: 0.5s;
+      text-align: center;
       background: #609764;
       &:hover {
         background: #4cb153;
+      }
+      @media (max-width: 992px) { 
+        font-size: 15px;
       }
     }
     @media (max-width: 992px) { 
