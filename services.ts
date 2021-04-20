@@ -1,4 +1,4 @@
-export const API_URL = 'http://viagensaguiar-com-br.umbler.net/?rest_route=';
+export const API_URL = 'http://admaguiar-com-br.umbler.net/?rest_route=';
 
 const getData = async (url: string) => {
   try {
