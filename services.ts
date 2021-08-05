@@ -54,7 +54,7 @@ const getPostsSlug = async () => {
 }
 
 const getPost = async (slug: string) => {
-  const data = await getData(`${API_URL}/wp/v2/itineraries&slug=${slug}&_fields=title,slug,acf`);
+  const data = await getData(`${API_URL}/aguiar/itinerary/${slug}`);
 
   return data;
 };
